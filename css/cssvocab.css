@@ -262,6 +262,12 @@ button:focus {
 	content: " ";
 	white-space: pre;
 }
+.css .pseudo-class::before {
+	content: ':';
+}
+.css .pseudo-element::before {
+	content: '::';
+}
 .css  .combinator {
 	padding: 0em .5em;
 }

@@ -10,6 +10,8 @@ $(document).ready(function() {
     'id-selector',
     'class-selector',
     'attribute-selector',
+    'pseudo-class',
+    'pseudo-element',
     'combinator',
     'declaration',
     'property',
@@ -24,8 +26,7 @@ $(document).ready(function() {
     'length',
     'unit',
     'color',
-    'vendor-prefix',
-    'pseudo-element'
+    'vendor-prefix'
   ];
   //Build vocab list in the sidebar
   function buildVocabList (vocab) {
