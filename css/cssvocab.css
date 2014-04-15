@@ -135,6 +135,7 @@ button:focus {
 }
 	.sidebar {
 		position: absolute;
+		z-index: 300;
 		top: 0;
 		right: 0;
 		bottom: 0;
@@ -180,6 +181,7 @@ button:focus {
 			}
 	.content {
 		position: absolute;
+		z-index: 200;
 		top: 0;
 		left: 0;
 		bottom: 0;
@@ -197,7 +199,7 @@ button:focus {
 	}
 	.css {
 		display: block;
-		width: 740px;
+		width: 592px;
 		margin: auto;
 		color: #999999;
 	}
