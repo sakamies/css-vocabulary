@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>
+    CSS Vocabulary
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimal-ui">
+  <link href="css/cssvocab.css" rel="stylesheet">
+  <script src="lib/jquery-2.0.3.min.js"></script>
+  <script src="lib/keymaster.js"></script>
+  <script src="js/cssvocab.js"></script>
+
+  <!-- Typekit: -->
+  <script type="text/javascript" src="//use.typekit.net/kxi2hrv.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+</head>
+<body class="noise-png">
+  <div class="toggles">
+    <button class="sidebar-show-btn btn-icon">
+      <img src="img/view-off.svg" alt="">
+    </button>
+    <button class="sidebar-hide-btn btn-icon">
+      <img src="img/view-on.svg" alt="">
+    </button>
+  </div>
+  <div class="layout">
+    <div class="sidebar">
+      <br>
+      <h1 class="title">
+        css
+        <br>
+        vocabulary
+      </h1>
+      <ul class="vocabList"></ul>
+    </div>
+    <div class="content">
+      <code class="css">
+        <br>
+        <div class="comment">
+          /*
+          <br>
+          &nbsp;&nbsp;Click on the css or the sidebar to see which is what.
+          <br>
+          &nbsp;&nbsp;Use the Tab key to browse via keyboard
+          <br>
+          */
+        </div>
+        <br>
+        <div class="statement at-rule"><span class="identifier">import</span> <span class="string">extra.css</span></div>
+        <div class="statement rule-set">
+          <h2 class="selector"><span class="simple-selector type-selector">ul</span><span class="combinator descendant"> </span><span class="simple-selector type-selector">li</span></h2>
+          <div class="declaration-block">
+            <dl class="declaration">
+              <dt class="property">list-style</dt>
+              <dd class="value"><span class="keyword">linear</span></dd>
+            </dl>
+            <dl class="declaration">
+              <dt class="property">margin</dt>
+              <dd class="value"><span class="length"><span class="number">2</span><span class="unit">em</span></span> <span class="percentage"><span class="number">20</span>%</span> <span class="length"><span class="number">15</span><span class="unit">px</span></span> <span class="number">0</span></dd>
+            </dl>
+          </div>
+        </div>
+        <div class="statement rule-set">
+          <h2 class="selector"><span class="simple-selector id-selector">#content</span></h2>
+          <div class="declaration-block">
+            <dl class="declaration">
+              <dt class="property"><span class="vendor-prefix">-webkit-</span>font-smoothing</dt>
+              <dd class="value"><span class="keyword">antialiased</span></dd>
+            </dl>
+            <dl class="declaration">
+              <dt class="property">background</dt>
+              <dd class="value">
+                <dl class="function">
+                  <dt class="function-name">url</dt>
+                  <dd class="argument"><span class="url">img/gradient.png</span></dd>
+                </dl>
+              </dd>
+            </dl>
+            <dl class="declaration">
+              <dt class="property">background</dt>
+              <dd class="value">
+                <dl class="function">
+                  <dt class="function-name">linear-gradient</dt>
+                  <dd class="argument"><span class="keyword">to</span><span class="keyword">bottom</span></dd>
+                  <dd class="argument"><span class="keyword color">red</span></dd>
+                  <dd class="argument"><span class="color">rgba(255,0,0,0)</span></dd>
+                </dl>
+              </dd>
+            </dl>
+          </div>
+        </div>
+        <div class="statement rule-set">
+          <h2 class="selector"><span class="simple-selector class-selector">.item</span><span class="combinator adjacent-sibling">+</span><span class="simple-selector class-selector">.item</span></h2>
+          <div class="declaration-block">
+            <dl class="declaration">
+              <dt class="property">margin-left</dt>
+              <dd class="value"><span class="length"><span class="number">-15</span><span class="unit">px</span></span></dd>
+            </dl>
+          </div>
+        </div>
+        <div class="statement rule-set">
+          <h2 class="selector"><span class="simple-selector id-selector">#buttons</span><span class="simple-selector class-selector">.lotsofcontent</span></h2>
+          <h2 class="selector"><span class="simple-selector id-selector">#buttons</span><span class="combinator child">&gt;</span><span class="simple-selector universal-selector">*</span></h2>
+          <h2 class="selector"><span class="simple-selector type-selector">input</span><span class="simple-selector attribute-selector">[type=submit]</span></h2>
+          <div class="declaration-block">
+            <dl class="declaration">
+              <dt class="property">border-radius</dt>
+              <dd class="value"><span class="length"><span class="number">.3</span><span class="unit">rem</span></span></dd>
+            </dl>
+          </div>
+        </div>
+        <div class="statement rule-set">
+          <h2 class="selector"><span class="simple-selector type-selector">a</span><span class="simple-selector pseudo-class">:hover</span></h2>
+          <h2 class="selector"><span class="simple-selector type-selector">a</span><span class="simple-selector pseudo-class">:focus</span></h2>
+          <div class="declaration-block">
+            <dl class="declaration">
+              <dt class="property">color</dt>
+              <dd class="value"><span class="keyword color">green</span></dd>
+            </dl>
+          </div>
+        </div>
+        <div class="statement rule-set">
+          <h2 class="selector"><span class="simple-selector type-selector">blockquote</span><span class="pseudo-element">::before</span></h2>
+          <h2 class="selector"><span class="simple-selector type-selector">blockquote</span><span class="pseudo-element">::after</span></h2>
+          <div class="declaration-block">
+            <dl class="declaration">
+              <dt class="property">content</dt>
+              <dd class="value"><span class="string">\201d</span></dd>
+            </dl>
+          </div>
+        </div>
+      </code>
+      <!-- <p>
+        <a class="logo" href="http://workflower.fi">
+          <img src="workflower-logo.png" alt="by workflower">
+        </a>
+      </p> -->
+    </div>
+  </div>
+</body>
+</html>

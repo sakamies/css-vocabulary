@@ -1,0 +1,385 @@
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: inherit;
+	font-weight: inherit;
+	line-height: inherit;
+	color: inherit;
+}
+body {
+	font-family: 'SourceSansPro-Regular', 'source-sans-pro', 'MyriadPro-Regular', 'Helvetica Neue', sans-serif;
+	font-size: 14px;
+	line-height: 16px;
+	-webkit-font-smoothing: antialiased;
+	color: #dedede;
+	background: hsla(0, 0%, 20%, 1);
+	background-repeat: repeat;
+	-webkit-text-size-adjust: 100%;
+	overflow: hidden;
+}
+a {
+	color: hsl(198, 49%, 46%);
+	text-decoration: none;
+}
+a:hover {
+
+}
+pre, code {
+	font-family: 'SourceCodePro-Regular', 'source-code-pro', monospace;
+}
+ul, ol, li {
+	list-style: none;
+}
+dl, dt, dd, li {
+}
+h1, h2, h3, h4, h5, h6 {
+	font-size: inherit;
+	font-weight: normal;
+}
+abbr {
+	font-variant: small-caps;
+	text-transform: lowercase;
+}
+
+input {
+	font: inherit;
+	color: inherit;
+	background: inherit;
+	line-height: inherit;
+	border: none;
+}
+input[type=submit], button {
+	display: inline-block;
+	background: hsla(70, 100%, 30%, .7);
+	border: none;
+	border-radius: 3px;
+	height: 1.6rem;
+	padding: 0rem .5rem;
+}
+input[type=submit]:active, button:active {
+	background: hsla(70, 100%, 30%, .7);
+}
+input:focus,
+button:focus {
+	color: white;
+	background: hsla(70, 100%, 30%, .5);
+	box-shadow: 0px 0px 0px 1px hsla(70, 100%, 40%, 1);
+	outline: none;
+}
+.btn-icon,
+.btn-icon:focus,
+.btn-icon:active {
+	width: 44px;
+	height: 44px;
+	margin: 0;
+	padding: 0;
+	background: none;
+	box-shadow: none;
+	border-radius: 0;
+	border: none;
+}
+.btn-icon:focus {
+	box-shadow: 0px 0px 0px 1px hsla(70, 100%, 40%, .5);
+}
+
+/* Layout */
+
+.sidebar-hide-btn {
+	position: fixed;
+	z-index: 800;
+	top: 0px;
+	right: 0px;
+	background: hsla(0, 0%, 20%, .5);
+	opacity: 1;
+	transition: opacity .5s ease;
+}
+.sidebar-hide .sidebar-hide-btn {
+	z-index: 400;
+	opacity: 0;
+}
+.sidebar-show-btn {
+	position: fixed;
+	z-index: 400;
+	right: 0px;
+	background: hsla(0, 0%, 20%, .5);
+	opacity: 0;
+	transition: opacity .5s ease;
+}
+.sidebar-hide .sidebar-show-btn {
+	z-index: 800;
+	opacity: 1;
+}
+.title {
+	font-weight: 400;
+	font-size: 28px;
+	line-height: 24px;
+	font-variant: small-caps;
+	padding: 0px 10px 20px 10px;
+}
+.sidebar-hide .title {
+	opacity: .1;
+}
+.logo {
+	padding: 21px 16px;
+	text-align: center;
+}
+	.logo img {
+		width: 122px;
+		height: 21px;
+	}
+
+.layout {
+}
+	.sidebar {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		width: 180px;
+		box-shadow: 0px 0px 5px 0px rgba(0,0,0,.5);
+		overflow: auto;
+		-webkit-overflow-scrolling: touch;
+		transition: right .5s ease;
+	}
+	.sidebar-hide .sidebar {
+		right: -136px;
+	}
+	.sidebar.focus {
+		box-shadow: inset 0px 3px 0px 0px hsla(70, 100%, 50%, .7);
+	}
+		.vocabSelect {
+			margin: 0 0 10px 10px;
+		}
+		.vocabList {
+			font-size: 14px;
+			line-height: 16px;
+		}
+		.sidebar-hide .vocabList {
+		}
+			.vocabList li {
+				display: block;
+				list-style: none;
+				padding: 2px 10px 2px 10px;
+				margin-bottom: 1px;
+				cursor: pointer;
+				color: rgba(255,255,255,.3);
+			}
+			.vocabList :hover {
+				color: rgba(255,255,255,.7);
+			}
+			.vocabList :focus {
+				outline: none;
+			}
+			.vocabList .selected {
+				color: white;
+				background: hsla(70, 100%, 30%, .5);
+				text-shadow: 0px 1px 2px rgba(0,0,0,.3);
+			}
+	.content {
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 180px;
+		padding: 0px 16px;
+		overflow: auto;
+		-webkit-overflow-scrolling: touch;
+		transition: right .5s ease;
+	}
+	.sidebar-hide .content {
+		right: 44px;
+	}
+	.content.focus {
+		box-shadow: inset 0px 3px 0px 0px hsla(70, 100%, 50%, .7);
+	}
+	.css {
+		display: block;
+		width: 740px;
+		margin: auto;
+		color: #999999;
+	}
+
+/* css code area */
+.css * {
+	border-radius: 2px;
+	white-space: nowrap;
+}
+
+.css .hover {
+	/*background: hsla(70, 100%, 40%, .2);
+  transition: background .5s ease;
+  transition-delay: 1s;*/
+  cursor: pointer;
+}
+.css .hilite {
+	text-shadow: 0px 1px 2px rgba(0,0,0,.3);
+  color: white;
+  background: hsla(70, 100%, 40%, .1);
+  box-shadow: 0px 0px 0px 1px hsla(70, 100%, 40%, .7);
+  transition: none;
+}
+.css .selected {
+	/*transition: all 0s linear;*/
+	color: white;
+	background: hsla(70, 100%, 30%, .5);
+  box-shadow:
+		0px 0px 0px 1px hsla(70, 100%, 40%, 1);
+	transition: none;
+}
+.css :focus {
+	outline: none;
+}
+
+/* The css code panel is not a syntax highlighted bit of actual css, but an html structure, something like CSSOM and its parts. It was easier to make a structure by hand than make a syntax highlighter tokenize everything just right. So here we add the bits of syntax between the elements with css. Bad for copy & paste, but nicer to style. */
+.css .statement,
+.css .selector,
+.css .declaration-block::before,
+.css .declaration-block::after,
+.css .declaration {
+  margin-bottom: 3px;
+}
+.css  .declaration-block {
+  margin-bottom: 19px;
+}
+
+.css .selector {
+	position: relative;
+	float: left;
+	clear: both;
+}
+.css  .selector > * {
+	position: relative;
+}
+.css  .selector::after {
+	position: absolute;
+	left: 100%;
+	content: ",";
+}
+.css  .selector:last-of-type::after {
+	content: " ";
+	white-space: pre;
+}
+.css  .combinator {
+	padding: 0em .5em;
+}
+.css .declaration-block {
+	clear: left;
+}
+.css .declaration-block::before {
+	display: block;
+	clear: left;
+	content: "{";
+}
+.css .declaration-block::after {
+	display: block;
+	clear: left;
+	content: "}";
+}
+.css .declaration {
+	float: left;
+	clear: both;
+	padding-right: 2em;
+}
+.css .declaration::after {
+	content: ";";
+}
+.css .declaration * {
+	display: inline-block;
+}
+.css .property {
+	margin-left: 2em;
+	margin-left: 2rem;
+	margin-right: .5em;
+	margin-right: .5rem;
+	display: block;
+	float: left;
+	position: relative;
+}
+.css .property::after {
+	display: block;
+	position: absolute;
+	right: -.5em;
+	right: -.5rem;
+	top: 0px;
+	content: ":";
+}
+.css .value {
+	display: block;
+	float: left;
+}
+.css .value > * {
+	display: block;
+	float: left;
+	margin-left: .5em;
+	margin-left: .5rem;
+}
+
+.css .vendor-prefix + * {
+	margin-left: 0em;
+	margin-left: 0rem;
+}
+.css .function {
+	display: block;
+	float: left;
+}
+.css .function::after {
+	content: ")";
+}
+.css .function-name {
+	display: block;
+	float: left;
+}
+.css .function-name::after {
+	content: "(";
+}
+.css .argument {
+	display: block;
+	float: left;
+}
+.css .argument::after {
+	display: block;
+	float: left;
+	content: ",";
+}
+.css .argument > * {
+	display: block;
+	float: left;
+}
+.css .argument > * + * {
+	margin-left: .5em;
+	margin-left: .5rem;
+}
+.css .argument + .argument {
+	margin-left: .5em;
+	margin-left: .5rem;
+}
+.css .argument:last-child::after {
+	content: "";
+}
+
+.css .color.hex::before {
+	content: "#";
+}
+.css .at-rule::before {
+	content: "@";
+}
+.css .at-rule::after {
+	content: ";";
+}
+.css .string::before,
+.css .string::after {
+    content: '"';
+}
+.css .combinator.descendant {
+	padding: 0em 0em;
+}
+
+
+
+.noise-png {
+	background-size: 256px 256px;
+	background-image: url(../img/noise.png);
+}
