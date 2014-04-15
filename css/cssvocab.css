@@ -149,7 +149,9 @@ button:focus {
 		right: -136px;
 	}
 	.sidebar.focus {
-		box-shadow: inset 0px 3px 0px 0px hsla(70, 100%, 50%, .7);
+		box-shadow:
+			inset 0px 3px 0px 0px hsla(70, 100%, 50%, .7),
+			0px 0px 5px 0px rgba(0,0,0,.5);
 	}
 		.vocabSelect {
 			margin: 0 0 10px 10px;
