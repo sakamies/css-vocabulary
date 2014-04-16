@@ -168,17 +168,17 @@ button:focus {
 				padding: 2px 10px 2px 10px;
 				margin-bottom: 1px;
 				cursor: pointer;
-				color: rgba(255,255,255,.3);
+				color: rgba(255,255,255,.5);
 			}
 			.vocabList :hover {
-				color: rgba(255,255,255,.7);
+				color: rgba(255,255,255,.9);
 			}
 			.vocabList :focus {
 				outline: none;
 			}
 			.vocabList .selected {
-				color: white;
-				background: hsla(70, 100%, 30%, .5);
+				color: rgba(255,255,255,1);
+				background: hsla(70, 100%, 30%, .7);
 				text-shadow: 0px 1px 2px rgba(0,0,0,.3);
 			}
 	.content {
@@ -203,7 +203,7 @@ button:focus {
 		display: block;
 		width: 592px;
 		margin: auto;
-		color: #999999;
+		color: rgba(255,255,255,.6);
 	}
 
 /* css code area */
@@ -228,7 +228,7 @@ button:focus {
 .css .selected {
 	/*transition: all 0s linear;*/
 	color: white;
-	background: hsla(70, 100%, 30%, .5);
+	background: hsla(70, 100%, 30%, .6);
   box-shadow:
 		0px 0px 0px 1px hsla(70, 100%, 40%, 1);
 	transition: none;
