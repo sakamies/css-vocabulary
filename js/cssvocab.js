@@ -21,6 +21,37 @@ $(document).ready(function() {
       'url': ''
     },
     {
+      'tokenName': 'media-query',
+      'humanName': 'Media query',
+      'url': ''
+    },
+    {
+      'tokenName': 'media-query-list',
+      'humanName': 'Media query list',
+      'url': ''
+    },
+
+    {
+      'tokenName': 'media-type',
+      'humanName': 'Media type',
+      'url': ''
+    },
+    {
+      'tokenName': 'expression',
+      'humanName': 'Expression',
+      'url': ''
+    },
+    {
+      'tokenName': 'media-feature',
+      'humanName': 'Media feature',
+      'url': ''
+    },
+    {
+      'tokenName': 'block',
+      'humanName': 'Block',
+      'url': ''
+    },
+    {
       'tokenName': 'declaration-block',
       'humanName': 'Declaration block',
       'url': ''

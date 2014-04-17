@@ -240,15 +240,39 @@ button:focus {
 /* The css code panel is not a syntax highlighted bit of actual css, but an html structure, something like CSSOM and its parts. It was easier to make a structure by hand than make a syntax highlighter tokenize everything just right. So here we add the bits of syntax between the elements with css. Bad for copy & paste, but nicer to style. */
 .css .statement,
 .css .selector,
-.css .declaration-block::before,
-.css .declaration-block::after,
+.css .block,
+.css .block::before,
+.css .block::after,
 .css .declaration {
   margin-bottom: 3px;
 }
-.css  .declaration-block {
+.css .block {
   margin-bottom: 19px;
 }
-
+.css .at-rule::before {
+	content: "@";
+}
+.css .import::after {
+	content: ";";
+}
+.css .media-query .expression::before {
+	content: '(';
+}
+.css .media-query .expression::after {
+	content: ')';
+}
+.css .media-feature {
+	position: relative;
+	margin-right: .5rem;
+}
+.css .media-feature::after {
+	display: block;
+	position: absolute;
+	right: -.5em;
+	right: -.5rem;
+	top: 0px;
+	content: ":";
+}
 .css .selector {
 	position: relative;
 	float: left;
@@ -275,18 +299,21 @@ button:focus {
 .css  .combinator {
 	padding: 0em .5em;
 }
-.css .declaration-block {
+.css .block {
 	clear: left;
 }
-.css .declaration-block::before {
+.css .block::before {
 	display: block;
 	clear: left;
 	content: "{";
 }
-.css .declaration-block::after {
+.css .block::after {
 	display: block;
 	clear: left;
 	content: "}";
+}
+.css .block .statement {
+	margin-left: 2rem;
 }
 .css .declaration {
 	float: left;
@@ -316,11 +343,11 @@ button:focus {
 	top: 0px;
 	content: ":";
 }
-.css .value {
+.css .declaration .value {
 	display: block;
 	float: left;
 }
-.css .value > * {
+.css .declaration .value > * {
 	display: block;
 	float: left;
 	margin-left: .5em;
@@ -372,12 +399,6 @@ button:focus {
 
 .css .color.hex::before {
 	content: "#";
-}
-.css .at-rule::before {
-	content: "@";
-}
-.css .at-rule::after {
-	content: ";";
 }
 .css .string::before,
 .css .string::after {

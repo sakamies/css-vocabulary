@@ -47,10 +47,10 @@
           */
         </div>
         <br>
-        <div class="statement at-rule"><span class="identifier">import</span> <span class="string">extra.css</span></div>
+        <div class="statement at-rule import"><span class="identifier">import</span> <span class="string">extra.css</span></div>
         <div class="statement rule-set">
           <h2 class="selector"><span class="simple-selector type-selector">ul</span><span class="combinator descendant-combinator"> </span><span class="simple-selector type-selector">li</span></h2>
-          <div class="declaration-block">
+          <div class="block declaration-block">
             <dl class="declaration">
               <dt class="property">list-style</dt>
               <dd class="value"><span class="keyword">linear</span></dd>
@@ -63,7 +63,7 @@
         </div>
         <div class="statement rule-set">
           <h2 class="selector"><span class="simple-selector id-selector">#content</span></h2>
-          <div class="declaration-block">
+          <div class="block declaration-block">
             <dl class="declaration">
               <dt class="property"><span class="vendor-prefix">-webkit-</span>font-smoothing</dt>
               <dd class="value"><span class="keyword">antialiased</span></dd>
@@ -90,10 +90,27 @@
             </dl>
           </div>
         </div>
+        <div class="statement at-rule rule-set media-query"><span class="identifier">media</span>
+          <span class="media-query-list">
+            <span class="keyword">only</span>
+            <span class="media-type">screen</span>
+            <span class="keyword">and</span>
+            <span class="expression"><span class="media-feature">min-width</span> <span class="value"><span class="length"><span class="number">35</span><span class="unit">em</span></span></span></span>
+          </span>
+          <div class="block">
+            <div class="statement rule-set">
+              <h2 class="selector"><span class="simple-selector id-selector">#content</span></h2>
+              <div class="block declaration-block">
+                <dl class="declaration">
+                  <dt class="property">width</dt><dd class="value"><span class="percentage"><span class="number">50</span>%</span></dd></dl>
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="statement rule-set">
           <h2 class="selector"><span class="simple-selector class-selector">.item</span><span class="combinator adjacent-sibling-combinator">+</span><span class="simple-selector class-selector">.item</span></h2>
           <h2 class="selector"><span class="simple-selector class-selector">.item</span><span class="combinator general-sibling-combinator">~</span><span class="simple-selector class-selector">.item</span></h2>
-          <div class="declaration-block">
+          <div class="block declaration-block">
             <dl class="declaration">
               <dt class="property">margin-left</dt>
               <dd class="value"><span class="length"><span class="number">-15</span><span class="unit">px</span></span></dd>
@@ -104,7 +121,7 @@
           <h2 class="selector"><span class="simple-selector id-selector">#buttons</span><span class="simple-selector class-selector">.lotsofcontent</span></h2>
           <h2 class="selector"><span class="simple-selector id-selector">#buttons</span><span class="combinator child-combinator">&gt;</span><span class="simple-selector universal-selector">*</span></h2>
           <h2 class="selector"><span class="simple-selector type-selector">input</span><span class="simple-selector attribute-selector">[type=submit]</span></h2>
-          <div class="declaration-block">
+          <div class="block declaration-block">
             <dl class="declaration">
               <dt class="property">border-radius</dt>
               <dd class="value"><span class="length"><span class="number">.3</span><span class="unit">rem</span></span></dd>
@@ -114,7 +131,7 @@
         <div class="statement rule-set">
           <h2 class="selector"><span class="simple-selector type-selector">a</span><span class="simple-selector pseudo-class">hover</span></h2>
           <h2 class="selector"><span class="simple-selector type-selector">a</span><span class="simple-selector pseudo-class">focus</span></h2>
-          <div class="declaration-block">
+          <div class="block declaration-block">
             <dl class="declaration">
               <dt class="property">color</dt>
               <dd class="value"><span class="keyword color">green</span></dd>
@@ -124,7 +141,7 @@
         <div class="statement rule-set">
           <h2 class="selector"><span class="simple-selector type-selector">blockquote</span><span class="pseudo-element">before</span></h2>
           <h2 class="selector"><span class="simple-selector type-selector">blockquote</span><span class="pseudo-element">after</span></h2>
-          <div class="declaration-block">
+          <div class="block declaration-block">
             <dl class="declaration">
               <dt class="property">content</dt>
               <dd class="value"><span class="string">\201d</span></dd>
