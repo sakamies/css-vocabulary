@@ -383,7 +383,7 @@ button:focus {
 .css .string::after {
     content: '"';
 }
-.css .combinator.descendant {
+.css .descendant-combinator {
 	padding: 0em 0em;
 }
 

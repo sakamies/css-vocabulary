@@ -66,6 +66,26 @@ $(document).ready(function() {
       'url': ''
     },
     {
+      'tokenName': 'descendant-combinator',
+      'humanName': 'Descendant combinator',
+      'url': ''
+    },
+    {
+      'tokenName': 'child-combinator',
+      'humanName': 'Child combinator',
+      'url': ''
+    },
+    {
+      'tokenName': 'adjacent-sibling-combinator',
+      'humanName': 'Adjacent sibling combinator',
+      'url': ''
+    },
+    {
+      'tokenName': 'general-sibling-combinator',
+      'humanName': 'General sibling combinator',
+      'url': ''
+    },
+    {
       'tokenName': 'declaration',
       'humanName': 'Declaration',
       'url': ''
