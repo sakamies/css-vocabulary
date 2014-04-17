@@ -1,63 +1,183 @@
 $(document).ready(function() {
   var vocab = [
-    'comment',
-    'statement',
-    'rule-set',
-    'at-rule',
-    'declaration-block',
-    'selector',
-    'simple-selector',
-    'id-selector',
-    'class-selector',
-    'attribute-selector',
-    'pseudo-class',
-    'pseudo-element',
-    'combinator',
-    'declaration',
-    'property',
-    'value',
-    'function',
-    'keyword',
-    'identifier',
-    'string',
-    'url',
-    'number',
-    'percentage',
-    'length',
-    'unit',
-    'color',
-    'vendor-prefix'
+    {
+      'tokenName': 'comment',
+      'humanName': 'Comment',
+      'url': ''
+    },
+    {
+      'tokenName': 'statement',
+      'humanName': 'Statement',
+      'url': ''
+    },
+    {
+      'tokenName': 'rule-set',
+      'humanName': 'Rule-set',
+      'url': ''
+    },
+    {
+      'tokenName': 'at-rule',
+      'humanName': 'At-rule',
+      'url': ''
+    },
+    {
+      'tokenName': 'declaration-block',
+      'humanName': 'Declaration block',
+      'url': ''
+    },
+    {
+      'tokenName': 'selector',
+      'humanName': 'Selector',
+      'url': ''
+    },
+    {
+      'tokenName': 'simple-selector',
+      'humanName': 'Simple selector',
+      'url': ''
+    },
+    {
+      'tokenName': 'id-selector',
+      'humanName': 'ID selector',
+      'url': ''
+    },
+    {
+      'tokenName': 'class-selector',
+      'humanName': 'Class selector',
+      'url': ''
+    },
+    {
+      'tokenName': 'attribute-selector',
+      'humanName': 'Attribute selector',
+      'url': ''
+    },
+    {
+      'tokenName': 'pseudo-class',
+      'humanName': 'Pseudo-class',
+      'url': ''
+    },
+    {
+      'tokenName': 'pseudo-element',
+      'humanName': 'Pseudo-element',
+      'url': ''
+    },
+    {
+      'tokenName': 'combinator',
+      'humanName': 'Combinator',
+      'url': ''
+    },
+    {
+      'tokenName': 'declaration',
+      'humanName': 'Declaration',
+      'url': ''
+    },
+    {
+      'tokenName': 'property',
+      'humanName': 'Property',
+      'url': ''
+    },
+    {
+      'tokenName': 'value',
+      'humanName': 'Value',
+      'url': ''
+    },
+    {
+      'tokenName': 'function',
+      'humanName': 'Function',
+      'url': ''
+    },
+    {
+      'tokenName': 'keyword',
+      'humanName': 'Keyword',
+      'url': ''
+    },
+    {
+      'tokenName': 'identifier',
+      'humanName': 'Identifier',
+      'url': ''
+    },
+    {
+      'tokenName': 'string',
+      'humanName': 'String',
+      'url': ''
+    },
+    {
+      'tokenName': 'url',
+      'humanName': 'URL',
+      'url': ''
+    },
+    {
+      'tokenName': 'number',
+      'humanName': 'Number',
+      'url': ''
+    },
+    {
+      'tokenName': 'percentage',
+      'humanName': 'Percentage',
+      'url': ''
+    },
+    {
+      'tokenName': 'length',
+      'humanName': 'Length',
+      'url': ''
+    },
+    {
+      'tokenName': 'unit',
+      'humanName': 'Unit',
+      'url': ''
+    },
+    {
+      'tokenName': 'color',
+      'humanName': 'Color',
+      'url': ''
+    },
+    {
+      'tokenName': 'vendor-prefix',
+      'humanName': 'Vendor prefix',
+      'url': ''
+    },
   ];
+
   //Build vocab list in the sidebar
   function buildVocabList (vocab) {
     for (var i = 0; i < vocab.length; i++) {
-      text = vocab[i].replace('-', ' ');
-      text = text.charAt(0).toUpperCase() + text.slice(1);
-      $('.vocabList').append('<li class="'+vocab[i]+'" tabindex="0">'+text+'</li>');
+      text = vocab[i].humanName;
+      token = vocab[i].tokenName;
+      $('.vocabList').append('<li class="'+token+'" tabindex="0">'+text+'</li>');
     }
   }
   buildVocabList(vocab);
 
-  function buildVocabSelect (vocab) {
-    for (var i = 0; i < vocab.length; i++) {
-      text = vocab[i].replace('-', ' ');
-      text = text.charAt(0).toUpperCase() + text.slice(1);
-      $('.vocabSelect').append('<option value="'+vocab[i]+'">'+text+'</option>');
-    }
+  /*
+    build css selectors that select:
+    - all tokens in the app
+    - tokens in css panel and
+    - tokens in vocabList
+  */
+  function buildSelectors (obj) {
+    var all = '';
+    var css = '';
+    var vocab = '';
+    obj.forEach(function (item, i, obj) {
+      var name = item.tokenName;
+      all = all + '.' + name + ',';
+      css = css + '.css .' + name + ',';
+      vocab = vocab + '.vocabList .' + name + ',';
+    });
+    // Remove the trailing comma in each selector string
+    all = all.slice(0, -1);
+    css = css.slice(0, -1);
+    vocab = vocab.slice(0, -1);
+    return {'allTokens': all, 'cssTokens': css, 'vocabTokens': vocab};
   }
-  buildVocabSelect(vocab);
+  var selectors = buildSelectors(vocab);
 
-  var selectable = '.' + vocab.join(', .');
-  var selectableCSS = '.css .' + vocab.join(', .css .');
-  var selectableVocab = '.vocabList .' + vocab.join(', .vocabList .');
-
-  $(selectableCSS).on('mouseover', function(event) {
+  $(selectors.cssTokens).on('mouseover', function(event) {
     event.stopPropagation();
     $('.hover').removeClass('hover');
     $(this).addClass('hover');
   });
 
-  $(selectableCSS).on('focus click', function(event) {
+  $(selectors.cssTokens).on('focus click', function(event) {
     event.stopPropagation();
 
     $('.content').addClass('focus');
@@ -66,7 +186,6 @@ $(document).ready(function() {
     var whatIsThis = $(this).attr('class');
     whatIsThis = whatIsThis.replace('hover', '').replace('hilite', '').replace('selected', '').replace('  ', '').trim();
     var pals = whatIsThis.split(' ');
-    console.log('.css ' + '.' + pals.join('.'));
     var $cssPals = $('.css ' + '.' + pals.join('.'));
     var vocabPalsSelector = '.vocabList .' + pals.join(', .vocabList .');
     $vocabPals = $(vocabPalsSelector);
@@ -78,7 +197,7 @@ $(document).ready(function() {
     $vocabPals.addClass('selected');
   });
 
-  $(selectableVocab).on('focus click', function(event) {
+  $(selectors.vocabTokens).on('focus click', function(event) {
     event.stopPropagation();
 
     $('.sidebar').addClass('focus');
@@ -94,7 +213,7 @@ $(document).ready(function() {
     $(this).addClass('selected');
   });
 
-  $(selectable).attr('tabindex', '0');
+  $(selectors.allTokens).attr('tabindex', '0');
   //$('.vocabList .property').focus();
 
   key('up', function(event){
@@ -114,11 +233,9 @@ $(document).ready(function() {
 
   $('.sidebar-hide-btn').on('click touchstart', function(event) {
     event.preventDefault();
-    console.log('hide sidebar');
     $('body').addClass('sidebar-hide');
   });
   $('.sidebar-show-btn').on('click touchstart', function(event) {
-    console.log('show sidebar');
     event.preventDefault();
     $('body').removeClass('sidebar-hide');
   });
