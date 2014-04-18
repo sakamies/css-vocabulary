@@ -67,6 +67,16 @@ $(document).ready(function() {
       'url': ''
     },
     {
+      'tokenName': 'type-selector',
+      'humanName': 'Type selector',
+      'url': ''
+    },
+    {
+      'tokenName': 'universal-selector',
+      'humanName': 'Universal selector',
+      'url': ''
+    },
+    {
       'tokenName': 'id-selector',
       'humanName': 'ID selector',
       'url': ''
@@ -141,11 +151,11 @@ $(document).ready(function() {
       'humanName': 'Keyword',
       'url': ''
     },
-    {
+    /*{
       'tokenName': 'identifier',
       'humanName': 'Identifier',
       'url': ''
-    },
+    },*/
     {
       'tokenName': 'string',
       'humanName': 'String',
