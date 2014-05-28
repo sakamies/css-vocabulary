@@ -170,13 +170,16 @@ button:focus {
 				cursor: pointer;
 				color: rgba(255,255,255,.5);
 			}
+			.vocabList a {
+				color: inherit;
+			}
 			.vocabList :hover {
 				color: rgba(255,255,255,.9);
 			}
 			.vocabList :focus {
 				outline: none;
 			}
-			.vocabList .selected {
+			.vocabList .hilite {
 				color: rgba(255,255,255,1);
 				background: hsla(70, 100%, 30%, .7);
 				text-shadow: 0px 1px 2px rgba(0,0,0,.3);
