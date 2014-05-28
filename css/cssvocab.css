@@ -27,6 +27,10 @@ a {
 a:hover {
 
 }
+[tabindex],
+button {
+	cursor: pointer;
+}
 pre, code {
 	font-family: 'SourceCodePro-Regular', 'source-code-pro', monospace;
 }
