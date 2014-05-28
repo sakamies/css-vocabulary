@@ -262,12 +262,6 @@ $(document).ready(function() {
     });
   }
 
-  $(selectors.cssTokens).on('mouseover', function(event) {
-    event.stopPropagation();
-    $('.hover').removeClass('hover');
-    $(this).addClass('hover');
-  });
-
   $(selectors).on('focus click', function(event) {
     var tokens = getTokens(this);
 
