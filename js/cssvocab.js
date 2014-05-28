@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  var supportsHashChange = 'onhashchange' in window;
   var vocab = [
     {
       'tokenName': 'comment',
@@ -200,11 +201,17 @@ $(document).ready(function() {
 
   //Build vocab list in the sidebar
   function buildVocabList (vocab) {
-    for (var i = 0; i < vocab.length; i++) {
-      text = vocab[i].humanName;
-      token = vocab[i].tokenName;
-      $('.vocabList').append('<li class="'+token+'" tabindex="0">'+text+'</li>');
-    }
+    var vocabListItems = [];
+    var text;
+    var token;
+
+    $.each(vocab, function (i, val) {
+      text = val.humanName;
+      token = val.tokenName;
+      vocabListItems.push('<li class="'+token+'"><a href="#'+token+'">'+text+'</a></li>')
+    });
+
+    $('.vocabList').append(vocabListItems.join(''));
   }
   buildVocabList(vocab);
 
@@ -215,66 +222,65 @@ $(document).ready(function() {
     - tokens in vocabList
   */
   function buildSelectors (obj) {
-    var all = '';
-    var css = '';
-    var vocab = '';
-    obj.forEach(function (item, i, obj) {
-      var name = item.tokenName;
-      all = all + '.' + name + ',';
-      css = css + '.css .' + name + ',';
-      vocab = vocab + '.vocabList .' + name + ',';
-    });
-    // Remove the trailing comma in each selector string
-    all = all.slice(0, -1);
-    css = css.slice(0, -1);
-    vocab = vocab.slice(0, -1);
-    return {'allTokens': all, 'cssTokens': css, 'vocabTokens': vocab};
+    var selectors = $.map(vocab, function (val) {
+      return val.tokenName;
+    }).join(', .');
+
+    return '.' + selectors;
   }
   var selectors = buildSelectors(vocab);
 
-  $(selectors.cssTokens).on('mouseover', function(event) {
-    event.stopPropagation();
-    $('.hover').removeClass('hover');
-    $(this).addClass('hover');
-  });
+  function getTokens(element) {
+    var className = element.className;
+    var tokens = className.replace('hover', '').replace('hilite', '').replace('selected', '').replace('  ', '').trim();
+    return tokens.split(' ');
+  }
 
-  $(selectors.cssTokens).on('focus click', function(event) {
-    event.stopPropagation();
-
-    $('.content').addClass('focus');
-    $('.sidebar').removeClass('focus');
-
-    var whatIsThis = $(this).attr('class');
-    whatIsThis = whatIsThis.replace('hover', '').replace('hilite', '').replace('selected', '').replace('  ', '').trim();
-    var pals = whatIsThis.split(' ');
-    var $cssPals = $('.css ' + '.' + pals.join('.'));
-    var vocabPalsSelector = '.vocabList .' + pals.join(', .vocabList .');
-    $vocabPals = $(vocabPalsSelector);
-
+  function hiliteTokens(tokens) {
+    var cssPals = '.css .' + tokens.join('.');
+    var vocabPals = '.vocabList .' + tokens.join(', .vocabList .');
     $('.hilite').removeClass('hilite');
-    $('.selected').removeClass('selected');
-    $cssPals.addClass('hilite');
-    $(this).addClass('selected');
-    $vocabPals.addClass('selected');
-  });
+    $(cssPals).addClass('hilite');
+    $(vocabPals).addClass('hilite');
+  }
 
-  $(selectors.vocabTokens).on('focus click', function(event) {
+  function hiliteHash() {
+    var hash = location.hash;
+    var tokens;
+    if (hash) {
+      tokens = hash.substr(1).split('+');
+    }
+    if (tokens) {
+      hiliteTokens(tokens);
+    }
+  }
+  hiliteHash();
+
+  if (supportsHashChange) {
+    $(window).on('hashchange', function () {
+      hiliteHash();
+    });
+  }
+
+  $(selectors).on('focus click', function(event) {
+    var tokens = getTokens(this);
+
     event.stopPropagation();
 
-    $('.sidebar').addClass('focus');
-    $('.content').removeClass('focus');
+    $(this).closest('.content, .sidebar').addClass('focus')
+      .siblings().removeClass('focus');
 
-    var whatIsThis = $(this).attr('class');
-    whatIsThis = whatIsThis.replace('hover', '').replace('hilite', '').replace('selected', '').replace('  ', '').trim();
-    var $cssPals = $('.css .' + whatIsThis);
-
-    $('.hilite').removeClass('hilite');
     $('.selected').removeClass('selected');
-    $cssPals.addClass('hilite');
     $(this).addClass('selected');
+
+    location.hash = '#' + tokens.join('+');
+
+    if (!supportsHashChange) {
+      $(window).trigger('hashchange');
+    }
   });
 
-  $(selectors.allTokens).attr('tabindex', '0');
+  $(selectors).attr('tabindex', '0');
   //$('.vocabList .property').focus();
 
   key('up', function(event){
