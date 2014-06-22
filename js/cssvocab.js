@@ -256,11 +256,9 @@ $(document).ready(function() {
   }
   hiliteHash();
 
-  if (supportsHashChange) {
-    $(window).on('hashchange', function () {
-      hiliteHash();
-    });
-  }
+  $(window).on('hashchange', function () {
+    hiliteHash();
+  });
 
   $(selectors).on('focus click', function(event) {
     var tokens = getTokens(this);
